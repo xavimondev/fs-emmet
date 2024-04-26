@@ -1,0 +1,9 @@
+.DS_Store
+extension/.vscode-test
+extension/out
+extension/.vscode
+extension/node_modules
+extension/dist
+landing/.astro
+landing/.vscode
+landing/node_modules

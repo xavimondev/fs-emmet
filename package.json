@@ -1,0 +1,11 @@
+{
+  "name": "folder-emmet-monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier": "npx prettier . --write"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5",
+    "@ianvs/prettier-plugin-sort-imports": "4.2.1"
+  }
+}
