@@ -2,8 +2,8 @@
   "name": "folder-emmet-monorepo",
   "version": "1.0.0",
   "scripts": {
-    "web:dev":"pnpm --filter=landing dev",
-    "ext:dev":"pnpm --filter=extension watch",
+    "web:dev": "pnpm --filter=landing dev",
+    "ext:dev": "pnpm --filter=extension watch",
     "prettier": "npx prettier . --write"
   },
   "devDependencies": {
