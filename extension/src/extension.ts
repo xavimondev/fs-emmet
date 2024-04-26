@@ -1,23 +1,24 @@
-import * as vscode from "vscode";
-import { getUserInput } from "./utils/user-input";
-import { factoryPaths, initCreationPaths } from "./utils/model";
+import * as vscode from 'vscode'
+
+import { factoryPaths, initCreationPaths } from './utils/model'
+import { getUserInput } from './utils/user-input'
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand("memfs.createFS", (_) => {
-      const editor = vscode.window.activeTextEditor;
-      const expression = getUserInput({ editor });
+    vscode.commands.registerCommand('memfs.createFS', (_) => {
+      const editor = vscode.window.activeTextEditor
+      const expression = getUserInput({ editor })
       if (!expression) {
-        return;
+        return
       }
-      const paths = factoryPaths({ expression });
+      const paths = factoryPaths({ expression })
       if (paths && paths.length > 0) {
         initCreationPaths({
-          paths,
-        });
+          paths
+        })
       }
     })
-  );
+  )
 }
 
 // This method is called when your extension is deactivated

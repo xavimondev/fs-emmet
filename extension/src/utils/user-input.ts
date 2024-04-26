@@ -1,39 +1,32 @@
-import * as vscode from "vscode";
-import { extractExpression } from "./extract-expression";
+import * as vscode from 'vscode'
 
-export const getUserInput = ({
-  editor,
-}: {
-  editor: vscode.TextEditor | undefined;
-}) => {
-  let userInput = undefined;
+import { extractExpression } from './extract-expression'
+
+export const getUserInput = ({ editor }: { editor: vscode.TextEditor | undefined }) => {
+  let userInput = undefined
   if (editor) {
-    const cursorPosition = editor.selection.active; // a vscode.Position
+    const cursorPosition = editor.selection.active // a vscode.Position
     // for text on line up to cursor
-    const lineText = editor.document.lineAt(cursorPosition.line).text;
-    userInput = lineText.substring(0, cursorPosition.character);
+    const lineText = editor.document.lineAt(cursorPosition.line).text
+    userInput = lineText.substring(0, cursorPosition.character)
   }
 
   if (userInput) {
-    userInput = extractExpression({ input: userInput });
+    userInput = extractExpression({ input: userInput })
   }
-  return userInput;
-};
+  return userInput
+}
 
-export const clearUserInput = ({
-  editor,
-}: {
-  editor: vscode.TextEditor | undefined;
-}) => {
+export const clearUserInput = ({ editor }: { editor: vscode.TextEditor | undefined }) => {
   if (!editor) {
-    return;
+    return
   }
 
-  const cursorPosition = editor.selection.active; // a vscode.Position
+  const cursorPosition = editor.selection.active // a vscode.Position
   const rangeToDelete = new vscode.Range(
     new vscode.Position(cursorPosition.line, 0),
     new vscode.Position(cursorPosition.line, cursorPosition.character)
-  );
+  )
 
-  editor.edit((selectedText) => selectedText.delete(rangeToDelete));
-};
+  editor.edit((selectedText) => selectedText.delete(rangeToDelete))
+}
