@@ -4,7 +4,7 @@ import { factoryPaths, initCreationPaths } from "./utils/model";
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand("memfs.addFile", (_) => {
+    vscode.commands.registerCommand("memfs.createFS", (_) => {
       const editor = vscode.window.activeTextEditor;
       const expression = getUserInput({ editor });
       if (!expression) {

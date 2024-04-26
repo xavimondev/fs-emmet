@@ -1,7 +1,7 @@
 {
   "name": "folder-emmet",
   "displayName": "folder-emmet",
-  "description": "create folder using emmet syntax",
+  "description": "Create FileSystem using emmet syntax",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.88.0"
@@ -13,43 +13,11 @@
   "contributes": {
     "commands": [
       {
-        "command": "memfs.workspaceInit",
-        "title": "Setup Workspace",
-        "category": "MemFS"
-      },
-      {
-        "command": "memfs.init",
-        "title": "Create Files",
-        "category": "MemFS"
-      },
-      {
-        "command": "memfs.reset",
-        "title": "Delete Files",
-        "category": "MemFS"
-      },
-      {
-        "command": "memfs.deleteFile",
-        "title": "Delete \"file.txt\"",
-        "category": "MemFS"
-      },
-      {
-        "command": "memfs.addFile",
-        "title": "Add file",
+        "command": "memfs.createFS",
+        "title": "Add Filesystem",
         "category": "MemFS"
       }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "memfs.addFile",
-          "when": "workbenchState != workspace"
-        },
-        {
-          "command": "memfs.workspaceInit",
-          "when": "workbenchState == workspace"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
