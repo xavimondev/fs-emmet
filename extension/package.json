@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "directory": "https://github.com/xavimondev/fs-emmet/extension"
+    "url": "https://github.com/xavimondev/fs-emmet/extension"
   },
   "author": {
     "name": "Xavier Alfaro",
@@ -24,7 +24,7 @@
     "Snippets",
     "Other"
   ],
-  "icon": "images/icon.png", 
+  "icon": "images/icon.png",
   "galleryBanner": {
     "color": "#ececec"
   },
@@ -37,7 +37,7 @@
         "category": "extension"
       }
     ],
-    "keybindings":[
+    "keybindings": [
       {
         "command": "extension.createFileSystem",
         "key": "ctrl+shift+f+s"
@@ -54,20 +54,22 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "publish": "vsce publish"
   },
   "devDependencies": {
-    "@types/vscode": "1.88.0",
     "@types/mocha": "10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "1.88.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
-    "eslint": "8.57.0",
-    "typescript": "5.3.3",
-    "ts-loader": "9.5.1",
-    "webpack": "5.91.0",
-    "webpack-cli": "5.1.4",
     "@vscode/test-cli": "0.0.8",
-    "@vscode/test-electron": "2.3.9"
+    "@vscode/test-electron": "2.3.9",
+    "@vscode/vsce": "2.26.0",
+    "eslint": "8.57.0",
+    "ts-loader": "9.5.1",
+    "typescript": "5.3.3",
+    "webpack": "5.91.0",
+    "webpack-cli": "5.1.4"
   }
 }
