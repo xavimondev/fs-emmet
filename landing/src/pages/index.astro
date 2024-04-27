@@ -1,3 +1,7 @@
+---
+import '../styles/index.css'
+---
+
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
@@ -6,7 +10,32 @@
     <meta name='generator' content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <h1 class='text-3xl font-bold underline text-green-600'>Hello world!</h1>
+  <body class='bg-background overflow-hidden'>
+    <div
+      class='absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:4rem_4rem]'
+    >
+    </div>
+    <section class='grid place-content-center min-h-dvh'>
+      <div class='absolute w-[480px] h-64 top-[30%] -left-24 opacity-40 filter blur-[140px] z-0'>
+        <div class='relative'>
+          <div class='rounded-full h-64 w-full bg-white'></div><div
+            class='absolute top-32 left-24 rounded-full h-64 w-full bg-[#323233]'
+          >
+          </div>
+        </div>
+      </div>
+      <h1
+        class='text-transparent bg-clip-text bg-gradient-to-tr from-indigo-500 via-red-200 to-yellow-200 text-6xl font-extrabold sm:text-8xl sm:leading-[5.5rem] text-center mb-10'
+      >
+        Emmet folders
+      </h1>
+      <div
+        class='size-full p-4 border rounded-xl border-zinc-800 bg-[#18181B] drop-shadow-[0_0_12px_rgba(49,49,49,0.35)] hover:border-zinc-600 transition-colors duration-300 ease-in-out hide md:block md:w-[900px] xl:w-[1280px]'
+      >
+        <p class='text-gray-300 text-2xl'>
+          A video showcasing vscode extension, user could edit code. Made with remotion
+        </p>
+      </div>
+    </section>
   </body>
 </html>
