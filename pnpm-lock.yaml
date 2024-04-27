@@ -13,14 +13,18 @@ importers:
   landing:
     specifiers:
       '@astrojs/check': 0.5.10
-      '@astrojs/tailwind': ^5.1.0
+      '@astrojs/tailwind': 5.1.0
       astro: 4.7.0
-      tailwindcss: ^3.4.3
+      clsx: 2.1.1
+      tailwind-merge: 2.3.0
+      tailwindcss: 3.4.3
       typescript: 5.4.5
     dependencies:
       '@astrojs/check': 0.5.10_typescript@5.4.5
       '@astrojs/tailwind': 5.1.0_hcgyi2zjnphzstis5aupxozqbi
       astro: 4.7.0_typescript@5.4.5
+      clsx: 2.1.1
+      tailwind-merge: 2.3.0
       tailwindcss: 3.4.3
       typescript: 5.4.5
 
@@ -329,6 +333,13 @@ packages:
       '@babel/helper-plugin-utils': 7.24.0
       '@babel/plugin-syntax-jsx': 7.24.1_@babel+core@7.24.4
       '@babel/types': 7.24.0
+    dev: false
+
+  /@babel/runtime/7.24.4:
+    resolution: {integrity: sha512-dkxf7+hn8mFBwKjs9bvBlArzLVxVbS8usaPUDd5p2a9JCL9tB8OaOVN1isD4+Xyk4ns89/xeOmbQvgdK7IIVdA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
     dev: false
 
   /@babel/template/7.24.0:
@@ -3036,6 +3047,10 @@ packages:
       picomatch: 2.3.1
     dev: false
 
+  /regenerator-runtime/0.14.1:
+    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
+    dev: false
+
   /rehype-parse/9.0.0:
     resolution: {integrity: sha512-WG7nfvmWWkCR++KEkZevZb/uw41E8TsH4DsY9UxsTbIXCVGbAs4S+r8FrQ+OtH5EEQAs+5UxKC42VinkmpA1Yw==}
     dependencies:
@@ -3410,6 +3425,12 @@ packages:
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: false
+
+  /tailwind-merge/2.3.0:
+    resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
+    dependencies:
+      '@babel/runtime': 7.24.4
     dev: false
 
   /tailwindcss/3.4.3:
