@@ -1,24 +1,50 @@
 {
-  "name": "folder-emmet",
-  "displayName": "folder-emmet",
-  "description": "Create FileSystem using emmet syntax",
+  "name": "fs-emmet",
+  "displayName": "fs-emmet",
+  "description": "Create files and folders directly from your editor using Emmet syntax.",
   "version": "0.0.1",
+  "publisher": "xavimondev",
   "engines": {
     "vscode": "^1.88.0"
   },
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/xavimondev/fs-emmet/extension"
+  },
+  "author": {
+    "name": "Xavier Alfaro",
+    "url": "https://twitter.com/xavimonp"
+  },
+  "keywords": [
+    "create files",
+    "create folders",
+    "create file system"
+  ],
   "categories": [
+    "Snippets",
     "Other"
   ],
+  "icon": "images/icon.png", 
+  "galleryBanner": {
+    "color": "#ececec"
+  },
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "memfs.createFS",
-        "title": "Add Filesystem",
-        "category": "MemFS"
+        "command": "extension.createFileSystem",
+        "title": "Create File System",
+        "category": "extension"
+      }
+    ],
+    "keybindings":[
+      {
+        "command": "extension.createFileSystem",
+        "key": "ctrl+shift+f+s"
       }
     ]
   },
+  "license": "MIT",
   "scripts": {
     "vscode:prepublish": "pnpm run package",
     "compile": "webpack",

@@ -5,7 +5,7 @@ import { getUserInput } from './utils/user-input'
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('memfs.createFS', (_) => {
+    vscode.commands.registerCommand('extension.createFileSystem', (_) => {
       const editor = vscode.window.activeTextEditor
       const expression = getUserInput({ editor })
       if (!expression) {
