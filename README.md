@@ -1,3 +1,6 @@
+[![demo]](https://github.com/xavimondev/fs-emmet/assets/68721455/e52f0ecf-dd0f-4a16-b2ce-d66f8f01f0e5)
+
+
 ## Introduction
 
 A extension to create files and folders directly from your editor using Emmet syntax.
