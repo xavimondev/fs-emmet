@@ -8,10 +8,10 @@ export const getUserInput = ({ editor }: { editor: vscode.TextEditor | undefined
     const cursorPosition = editor.selection.active // a vscode.Position
     // for text on line up to cursor
     const lineText = editor.document.lineAt(cursorPosition.line).text
-    userInput = lineText.substring(0, cursorPosition.character)
+    userInput = lineText.substring(0, cursorPosition.character).trim()
   }
 
-  if (userInput) {
+  if (userInput && userInput.length > 0) {
     userInput = extractExpression({ input: userInput })
   }
   return userInput
