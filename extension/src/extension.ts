@@ -1,11 +1,14 @@
 import * as vscode from 'vscode'
 
-import { factoryPaths, initCreationPaths } from './utils/model'
-import { getUserInput } from './utils/user-input'
+
+
+import { factoryPaths, initCreationPaths } from './utils/model';
+import { getUserInput } from './utils/user-input';
+
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('extension.createFileSystem', (_) => {
+    vscode.commands.registerCommand('FSEmmet.createFileSystem', (_) => {
       const editor = vscode.window.activeTextEditor
       const expression = getUserInput({ editor })
       if (!expression) {

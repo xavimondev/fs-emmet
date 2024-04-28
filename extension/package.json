@@ -32,14 +32,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.createFileSystem",
+        "command": "FSEmmet.createFileSystem",
         "title": "Create File System",
         "category": "extension"
       }
     ],
     "keybindings": [
       {
-        "command": "extension.createFileSystem",
+        "command": "FSEmmet.createFileSystem",
         "key": "ctrl+shift+f+s"
       }
     ]
