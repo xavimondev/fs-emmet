@@ -2,7 +2,7 @@
   "name": "fs-emmet",
   "displayName": "fs-emmet",
   "description": "Create files and folders directly from your editor using Emmet syntax.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "xavimondev",
   "engines": {
     "vscode": "^1.88.0"
@@ -40,7 +40,8 @@
     "keybindings": [
       {
         "command": "FSEmmet.createFileSystem",
-        "key": "ctrl+shift+t"
+        "key": "ctrl+shift+t",
+        "mac": "ctrl+shift+t"
       }
     ]
   },
