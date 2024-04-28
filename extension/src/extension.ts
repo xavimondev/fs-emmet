@@ -1,10 +1,7 @@
 import * as vscode from 'vscode'
 
-
-
-import { factoryPaths, initCreationPaths } from './utils/model';
-import { getUserInput } from './utils/user-input';
-
+import { factoryPaths, initCreationPaths } from './utils/model'
+import { getUserInput } from './utils/user-input'
 
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(

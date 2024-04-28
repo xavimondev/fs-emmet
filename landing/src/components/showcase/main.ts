@@ -1,4 +1,5 @@
-import { registerRoot } from "remotion";
-import { Showcase } from "./showcase";
+import { registerRoot } from 'remotion'
 
-registerRoot(Showcase);
+import { Showcase } from './showcase'
+
+registerRoot(Showcase)
