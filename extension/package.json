@@ -2,7 +2,7 @@
   "name": "fs-emmet",
   "displayName": "fs-emmet",
   "description": "Create files and folders directly from your editor using Emmet syntax.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "xavimondev",
   "engines": {
     "vscode": "^1.88.0"
