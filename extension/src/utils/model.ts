@@ -1,3 +1,5 @@
+import { join } from 'node:path'
+import { glob } from 'fast-glob'
 import * as vscode from 'vscode'
 
 import { clearUserInput } from './user-input'
@@ -39,7 +41,7 @@ export const factoryPaths = ({ expression }: { expression: string }) => {
         initBatch = true
       }
     } else {
-      const isFolder = !isFile({ fileName: currentChunk })
+      const isFolder = !isFile({ resource: currentChunk })
       if (!initBatch) {
         if (isFolder) {
           if (isNested) {
@@ -78,26 +80,36 @@ export const initCreationPaths = ({ paths }: { paths: string[] }) => {
   createMultiplePaths({ paths })
 }
 
-const isFile = ({ fileName }: { fileName: string }) => fileName.includes('.')
+const isFile = ({ resource }: { resource: string }) => resource.includes('.')
 
-const createFileOrFolder = ({ fileName }: { fileName: string }) => {
-  const isValidFile = isFile({ fileName })
+const transformToFileSystem = async ({ filePath }: { filePath: string }) => {
+  const isValidFile = isFile({ resource: filePath })
   const wsPath = (vscode.workspace.workspaceFolders as vscode.WorkspaceFolder[])[0].uri.fsPath
+  const fullPath = vscode.Uri.joinPath(vscode.Uri.file(wsPath), `**/${filePath}`)
+  const result = await glob(fullPath.fsPath, {
+    onlyDirectories: !isValidFile
+  })
+  const pathFound = result.at(0)
 
-  const fullPath = vscode.Uri.joinPath(vscode.Uri.file(wsPath), fileName)
+  if (pathFound) return
 
-  if (isValidFile) {
-    vscode.workspace.fs.writeFile(fullPath, Buffer.from(''))
-  } else {
-    vscode.workspace.fs.createDirectory(fullPath)
+  const data = await matchPartialDirectory({ cwd: wsPath, pathString: filePath })
+  if (!data) {
+    const newPathUri = vscode.Uri.joinPath(vscode.Uri.file(wsPath), filePath)
+    createFileOrFolder({ uri: newPathUri, isFile: isValidFile })
+    return
   }
-  // vscode.window.showInformationMessage(fullPath.toString());
+
+  // This when user's input match of the part of full wd
+  const { partialPath, rest } = data
+  const fullNewPathUri = vscode.Uri.joinPath(vscode.Uri.file(partialPath), rest)
+  createFileOrFolder({ uri: fullNewPathUri, isFile: isValidFile })
 }
 
 const createMultiplePaths = ({ paths }: { paths: string[] }) => {
   try {
-    paths.forEach((fileName) => {
-      createFileOrFolder({ fileName })
+    paths.forEach((filePath) => {
+      transformToFileSystem({ filePath })
     })
 
     vscode.window.showInformationMessage('FileSystem created successfully')
@@ -108,4 +120,40 @@ const createMultiplePaths = ({ paths }: { paths: string[] }) => {
   setTimeout(() => {
     clearUserInput({ editor: vscode.window.activeTextEditor })
   }, 1500)
+}
+
+const createFileOrFolder = ({ uri, isFile }: { uri: vscode.Uri; isFile: boolean }) => {
+  if (isFile) {
+    vscode.workspace.fs.writeFile(uri, Buffer.from(''))
+  } else {
+    vscode.workspace.fs.createDirectory(uri)
+  }
+}
+
+const matchPartialDirectory = async ({ cwd, pathString }: { cwd: string; pathString: string }) => {
+  const parts = pathString.split('/')
+  let pathMatch = ''
+  let partialPath = ''
+  let posPartialFound = 0
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts.at(i) as string
+    pathMatch = join(pathMatch, part)
+    const search = join(cwd, `**/${pathMatch}`)
+    const result = await glob(search, {
+      onlyDirectories: true
+    })
+
+    if (!result.at(0)) break
+
+    partialPath = result.at(0) ?? ''
+    posPartialFound = i
+  }
+
+  if (partialPath === '') return
+
+  const rest = parts.slice(posPartialFound == 0 ? posPartialFound + 1 : posPartialFound).join('/')
+  return {
+    partialPath,
+    rest
+  }
 }
