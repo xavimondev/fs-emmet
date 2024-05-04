@@ -2,8 +2,8 @@ import { join } from 'node:path'
 import { glob } from 'fast-glob'
 import * as vscode from 'vscode'
 
-import { showMessageWithTimeout } from '@/utils/toast'
-import { clearUserInput } from '@/utils/user-input'
+import { showMessageWithTimeout } from './utils/toast'
+import { clearUserInput } from './utils/user-input'
 
 export const factoryPaths = ({ expression }: { expression: string }) => {
   const regex = /([^\+>()]+|\+|>|[()])/g
