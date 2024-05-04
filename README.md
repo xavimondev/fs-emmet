@@ -7,7 +7,7 @@ A extension to create files and folders directly from your editor using Emmet sy
 
 ## How to use?
 
-Press `ctrl+shift+p` to open command panel and type `Transform to file system`.
+Press `ctrl+shift+p` to open command panel and type `Transform to file system` or press **`ctrl+alt+t`** to create new file system. _(you can override this shortcut)_
 
 ## Roadmap
 
