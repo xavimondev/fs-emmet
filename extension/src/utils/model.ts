@@ -2,6 +2,7 @@ import { join } from 'node:path'
 import { glob } from 'fast-glob'
 import * as vscode from 'vscode'
 
+import { showMessageWithTimeout } from '../toast'
 import { clearUserInput } from './user-input'
 
 export const factoryPaths = ({ expression }: { expression: string }) => {
@@ -112,7 +113,10 @@ const createMultiplePaths = ({ paths }: { paths: string[] }) => {
       transformToFileSystem({ filePath })
     })
 
-    vscode.window.showInformationMessage('FileSystem created successfully')
+    showMessageWithTimeout({
+      message: 'FileSystem created successfully',
+      timeout: 2000
+    })
   } catch (error) {
     vscode.window.showErrorMessage('Something went wrong! Please report on GitHub')
   }
