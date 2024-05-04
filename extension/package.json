@@ -40,8 +40,8 @@
     "keybindings": [
       {
         "command": "FSEmmet.createFileSystem",
-        "key": "ctrl+shift+t",
-        "mac": "ctrl+shift+t"
+        "key": "ctrl+alt+t",
+        "mac": "ctrl+alt+t"
       }
     ]
   },
