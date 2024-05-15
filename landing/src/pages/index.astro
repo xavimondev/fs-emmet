@@ -1,11 +1,13 @@
 ---
 import '../styles/index.css'
+
+import { App } from '@/components/app'
 ---
 
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <!-- <link rel='icon' type='image/svg+xml' href='/favicon.svg' /> -->
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>Astro</title>
@@ -32,9 +34,15 @@ import '../styles/index.css'
       <div
         class='size-full p-4 border rounded-xl border-zinc-800 bg-[#18181B] drop-shadow-[0_0_12px_rgba(49,49,49,0.35)] hover:border-zinc-600 transition-colors duration-300 ease-in-out hide md:block md:w-[900px] xl:w-[1280px]'
       >
-        <p class='text-gray-300 text-2xl'>
-          A video showcasing vscode extension, user could edit code. Made with remotion
-        </p>
+        <div class='flex flex-row items-center'>
+          <p class='text-gray-300 text-2xl w-full'>
+            A video showcasing vscode extension, user could edit code. Made with remotion
+          </p>
+          <!-- <span>cool!</span> -->
+          <div class='rounded-xl'>
+            <App client:visible />
+          </div>
+        </div>
       </div>
     </section>
   </body>

@@ -45,20 +45,6 @@ function FileTextIc(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function Main() {
-  const frame = useCurrentFrame()
-  const opacity = Math.min(1, frame / 30)
-
-  return (
-    <AbsoluteFill className='bg-gradient-to-tr from-[#1a1a1a] to-[#0b0b0d] p-2'>
-      <div style={{ opacity }}>
-        <h1 className='text-gray-300 text-xl text-center'>source directory</h1>
-        <Tree />
-      </div>
-    </AbsoluteFill>
-  )
-}
-
 function Leaf({ file, children, depth }: { file: string; children: any; depth: number }) {
   return (
     <div
@@ -66,7 +52,7 @@ function Leaf({ file, children, depth }: { file: string; children: any; depth: n
         paddingLeft: `${depth + 10}px`
       }}
     >
-      <div className='bg-clip-text text-transparent bg-gradient-to-t from-white to-gray-400 font-medium text-xs lg:text-sm flex gap-0.5 items-center py-0.5'>
+      <div className='bg-clip-text text-transparent bg-gradient-to-t from-white to-gray-400 font-medium text-sm lg:text-lg flex gap-0.5 items-center py-0.5'>
         {children ? (
           <ChevronDownIc className='size-2 lg:size-3 text-white' />
         ) : (
@@ -93,6 +79,20 @@ function Tree() {
         <Leaf {...tree} depth={1} key={index} />
       ))}
     </div>
+  )
+}
+
+export function Main() {
+  const frame = useCurrentFrame()
+  const opacity = Math.min(1, frame / 30)
+
+  return (
+    <AbsoluteFill className='bg-gradient-to-tr from-[#1a1a1a] to-[#0b0b0d] p-2'>
+      <div style={{ opacity }}>
+        <h1 className='text-gray-300 text-2xl text-center'>source directory</h1>
+        <Tree />
+      </div>
+    </AbsoluteFill>
   )
 }
 
