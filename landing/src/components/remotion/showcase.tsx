@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react'
-import { AbsoluteFill, Composition } from 'remotion'
+import { AbsoluteFill, Composition, useCurrentFrame } from 'remotion'
 
 import { generateDirectoryTree } from '../../utils/tree'
 
@@ -46,10 +46,15 @@ function FileTextIc(props: SVGProps<SVGSVGElement>) {
 }
 
 function Main() {
+  const frame = useCurrentFrame()
+  const opacity = Math.min(1, frame / 30)
+
   return (
     <AbsoluteFill className='bg-gradient-to-tr from-[#1a1a1a] to-[#0b0b0d] p-2'>
-      <h1 className='text-gray-300 text-xl text-center'>source directory</h1>
-      <Tree />
+      <div style={{ opacity }}>
+        <h1 className='text-gray-300 text-xl text-center'>source directory</h1>
+        <Tree />
+      </div>
     </AbsoluteFill>
   )
 }
