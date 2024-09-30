@@ -1,7 +1,7 @@
-import type { SVGProps } from 'react'
+import { useState, type SVGProps } from 'react'
 import { AbsoluteFill, Composition, useCurrentFrame } from 'remotion'
 
-import { generateDirectoryTree } from '../../utils/tree'
+import { generateDirectoryTree, type TreeFormatted } from '../../utils/tree'
 
 function ChevronDownIc(props: SVGProps<SVGSVGElement>) {
   return (
@@ -71,8 +71,7 @@ function Leaf({ file, children, depth }: { file: string; children: any; depth: n
   )
 }
 
-function Tree() {
-  const treeResult = generateDirectoryTree()
+function Tree({ treeResult }: { treeResult: TreeFormatted[] }) {
   return (
     <div className='mt-4'>
       {treeResult.map((tree: any, index: number) => (
@@ -82,7 +81,49 @@ function Tree() {
   )
 }
 
-export function Main() {
+const treeExample = [
+  {
+    path: 'src'
+  },
+  {
+    path: 'src/components'
+  },
+  {
+    path: 'src/components/users'
+  },
+  {
+    path: 'src/components/users/data.ts'
+  },
+  {
+    path: 'src/components/users/table.tsx'
+  },
+  {
+    path: 'src/components/ai.tsx'
+  },
+  {
+    path: 'src/components/combobox-badges.tsx'
+  },
+  {
+    path: 'editor'
+  },
+  {
+    path: 'editor/bubble-menu'
+  },
+  {
+    path: 'editor/bubble-menu/editor-bubble-item.tsx'
+  },
+  {
+    path: 'README.md'
+  }
+]
+
+export function Main(props: any) {
+  const { userInput } = props
+  const [treeResult, setTreeResult] = useState(
+    generateDirectoryTree({
+      tree: treeExample
+    })
+  )
   const frame = useCurrentFrame()
   const opacity = Math.min(1, frame / 30)
 
@@ -90,7 +131,7 @@ export function Main() {
     <AbsoluteFill className='bg-gradient-to-tr from-[#1a1a1a] to-[#0b0b0d] p-2'>
       <div style={{ opacity }}>
         <h1 className='text-gray-300 text-2xl text-center'>source directory</h1>
-        <Tree />
+        {treeResult && <Tree treeResult={treeResult} />}
       </div>
     </AbsoluteFill>
   )

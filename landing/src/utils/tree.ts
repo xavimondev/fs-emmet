@@ -2,46 +2,10 @@ type Tree = {
   path: string
 }
 
-type TreeFormatted = {
+export type TreeFormatted = {
   file: string
   children?: TreeFormatted[]
 }
-
-const treeExample = [
-  {
-    path: 'src'
-  },
-  {
-    path: 'src/components'
-  },
-  {
-    path: 'src/components/users'
-  },
-  {
-    path: 'src/components/users/data.ts'
-  },
-  {
-    path: 'src/components/users/table.tsx'
-  },
-  {
-    path: 'src/components/ai.tsx'
-  },
-  {
-    path: 'src/components/combobox-badges.tsx'
-  },
-  {
-    path: 'editor'
-  },
-  {
-    path: 'editor/bubble-menu'
-  },
-  {
-    path: 'editor/bubble-menu/editor-bubble-item.tsx'
-  },
-  {
-    path: 'README.md'
-  }
-]
 
 const buildTreeStructure = ({ path, parent }: { path: string; parent: any }) => {
   const pathParts = path.split('/') // [components]
@@ -64,10 +28,12 @@ const buildTreeStructure = ({ path, parent }: { path: string; parent: any }) => 
   buildTreeStructure({ path: pathParts.slice(1).join('/'), parent: node.children })
 }
 
-export const generateDirectoryTree = () => {
+export const generateDirectoryTree = ({ tree }: { tree: { path: string }[] | undefined }) => {
+  if (!tree) return
+
   const treeFormatted: TreeFormatted[] = []
 
-  treeExample.forEach((item: Tree) => {
+  tree.forEach((item: Tree) => {
     buildTreeStructure({ path: item.path, parent: treeFormatted })
   })
 
